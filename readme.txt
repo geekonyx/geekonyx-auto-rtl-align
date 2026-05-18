@@ -24,9 +24,14 @@ Key Features:
 
 == Installation ==
 
-1. Upload the `geekonyx-auto-rtl-align` folder to the `/wp-content/plugins/` directory.
-2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Your Arabic articles will now automatically display in RTL mode.
+1. Go to your WordPress Dashboard, navigate to **Plugins > Add New**.
+2. Search for **GeekOnyx Auto RTL Align**.
+3. Click **Install Now** and then **Activate**.
+
+Alternatively, if you downloaded the ZIP file:
+1. Go to **Plugins > Add New > Upload Plugin** in your dashboard.
+2. Choose the plugin ZIP file and click **Install Now**.
+3. Click **Activate Plugin**.
 
 == Screenshots ==
 
