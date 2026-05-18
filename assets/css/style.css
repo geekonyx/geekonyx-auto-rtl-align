@@ -1,0 +1,37 @@
+/**
+ * GeekOnyx Auto RTL Align - Styles
+ */
+
+/* Support for the detection class on post containers or body tag */
+.geekonyx-auto-rtl-detected .entry-title,
+.geekonyx-auto-rtl-detected .post-title,
+.geekonyx-auto-rtl-detected h1,
+.geekonyx-auto-rtl-detected h2,
+.geekonyx-auto-rtl-detected h3,
+.geekonyx-auto-rtl-detected h4,
+.geekonyx-auto-rtl-detected .jnews_post_title, /* JNews specific */
+.geekonyx-auto-rtl-detected a {
+    direction: rtl;
+    text-align: right;
+    unicode-bidi: embed;
+}
+
+/* Specific fix for single post H1 if it uses standard classes */
+body.geekonyx-auto-rtl-detected h1.entry-title,
+body.geekonyx-auto-rtl-detected .entry-header h1 {
+    direction: rtl;
+    text-align: right;
+}
+
+.geekonyx-auto-rtl-content {
+    direction: rtl;
+    text-align: right;
+    unicode-bidi: embed;
+    width: 100%;
+}
+
+/* Ensure images and other elements inside RTL content behave correctly */
+.geekonyx-auto-rtl-content img {
+    max-width: 100%;
+    height: auto;
+}
