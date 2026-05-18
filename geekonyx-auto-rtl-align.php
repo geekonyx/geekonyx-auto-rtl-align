@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: GeekOnyx Auto RTL Align
- * Plugin URI:  https://github.com/geekonyx/wp-auto-rtl-align
+ * Plugin URI:  https://github.com/geekonyx/geekonyx-auto-rtl-align
  * Description: Automatically detects Arabic text in post titles and content to apply RTL (Right-to-Left) alignment.
  * Version:     1.0.4
  * Author:      GeekOnyx
@@ -56,9 +56,9 @@ function geekonyx_auto_rtl_filter_title( $title, $id = null ) {
 	}
 
 	if ( geekonyx_auto_rtl_has_arabic( $title ) ) {
-		return "\xe2\x80\xab" . $title . "\xe2\x80\xac";
+		return "\xe2\x80\xab" . esc_html( $title ) . "\xe2\x80\xac";
 	}
-	return $title;
+	return esc_html( $title );
 }
 add_filter( 'the_title', 'geekonyx_auto_rtl_filter_title', 10, 2 );
 
@@ -102,8 +102,8 @@ function geekonyx_auto_rtl_filter_content( $content ) {
 	}
 
 	if ( geekonyx_auto_rtl_has_arabic( $content ) ) {
-		return '<div class="geekonyx-auto-rtl-content" dir="rtl">' . $content . '</div>';
+		return '<div class="geekonyx-auto-rtl-content" dir="rtl">' . wp_kses_post( $content ) . '</div>';
 	}
-	return $content;
+	return wp_kses_post( $content );
 }
 add_filter( 'the_content', 'geekonyx_auto_rtl_filter_content' );
