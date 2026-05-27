@@ -3,7 +3,7 @@ Contributors: GeekOnyx
 Tags: rtl, arabic, alignment, auto-rtl, multi-language
 Requires at least: 5.0
 Tested up to: 6.9
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,10 @@ Alternatively, if you downloaded the ZIP file:
 1. Arabic article title and content automatically aligned to the right on an English site.
 
 == Changelog ==
+
+= 1.0.5 =
+* Strip unwanted CSS styles injected by specific shortcodes (.jeg_breadcrumbs, .entry-header).
+* Updated stable tag.
 
 = 1.0.4 =
 * Added languages folder for future internationalization.

@@ -3,7 +3,7 @@
  * Plugin Name: GeekOnyx Auto RTL Align
  * Plugin URI:  https://github.com/geekonyx/geekonyx-auto-rtl-align
  * Description: Automatically detects Arabic text in post titles and content to apply RTL (Right-to-Left) alignment.
- * Version:     1.0.4
+ * Version:     1.0.5
  * Author:      GeekOnyx
  * Author URI:  https://github.com/geekonyx
  * License:     GPL2
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Define Constants
  */
-define( 'GEEKONYX_AUTO_RTL_VERSION', '1.0.4' );
+define( 'GEEKONYX_AUTO_RTL_VERSION', '1.0.5' );
 define( 'GEEKONYX_AUTO_RTL_PATH', plugin_dir_path( __FILE__ ) );
 define( 'GEEKONYX_AUTO_RTL_URL', plugin_dir_url( __FILE__ ) );
 
@@ -107,3 +107,17 @@ function geekonyx_auto_rtl_filter_content( $content ) {
 	return wp_kses_post( $content );
 }
 add_filter( 'the_content', 'geekonyx_auto_rtl_filter_content' );
+
+/**
+ * Remove unwanted CSS injected by shortcodes (e.g., .jeg_breadcrumbs, .entry-header hide rules).
+ */
+function geekonyx_auto_rtl_strip_unwanted_css( $content ) {
+    // Remove the specific CSS block if present.
+    $pattern = '/\.jeg_breadcrumbs,\s*\.entry-header\s*\{[^}]*\}/i';
+    return preg_replace( $pattern, '', $content );
+}
+add_filter( 'the_content', 'geekonyx_auto_rtl_strip_unwanted_css', 2 );
+add_filter( 'elementor/frontend/the_content', 'geekonyx_auto_rtl_strip_unwanted_css', 2 );
+add_filter( 'pre_do_shortcode_tag', function( $output, $tag, $attr ) {
+    return preg_match( '/\.jeg_breadcrumbs|\.entry-header/', $output ) ? '' : $output;
+}, 10, 3 );
