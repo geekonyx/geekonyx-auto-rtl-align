@@ -102,9 +102,9 @@ function geekonyx_auto_rtl_filter_content( $content ) {
 	}
 
 	if ( geekonyx_auto_rtl_has_arabic( $content ) ) {
-		return '<div class="geekonyx-auto-rtl-content" dir="rtl">' . wp_kses_post( $content ) . '</div>';
+		return '<div class="geekonyx-auto-rtl-content" dir="rtl">' . $content . '</div>';
 	}
-	return wp_kses_post( $content );
+	return $content;
 }
 add_filter( 'the_content', 'geekonyx_auto_rtl_filter_content' );
 
